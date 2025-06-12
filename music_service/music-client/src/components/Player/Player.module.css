@@ -1,0 +1,347 @@
+.playerContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 16px 24px;
+    z-index: 1000;
+}
+
+.mainContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.leftSection {
+    flex: 1;
+    min-width: 180px;
+    max-width: 300px;
+}
+
+.centerSection {
+    flex: 2;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.rightSection {
+    flex: 1;
+    min-width: 180px;
+    max-width: 300px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Track Info Styles */
+.trackInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.coverImage {
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.trackDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.trackTitle {
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.artistName {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+}
+
+/* Controls Styles */
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.controlButton {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    width: 32px;
+    height: 32px;
+}
+
+.controlButton:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.controlButton.active {
+    color: #76c090;
+}
+
+.playButton {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.playButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.disabled {
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+}
+
+.disabled:hover {
+    background: none;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Progress Bar Styles */
+.progressContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+}
+
+.progressBar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    transition: height 0.2s ease;
+}
+
+.progressBar:hover {
+    height: 6px;
+}
+
+.progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+.time {
+    min-width: 40px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Volume Control Styles */
+.volumeControl {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.muteButton {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.muteButton:hover {
+    color: #ffffff;
+}
+
+.volumeSlider {
+    width: 100px;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: -4px;
+}
+
+.volumeSlider::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #1db954 var(--volume-percentage), rgba(255, 255, 255, 0.1) var(--volume-percentage));
+}
+
+.volumeSlider:hover::-webkit-slider-thumb {
+    transform: scale(1.2);
+}
+
+/* Queue Styles */
+.queueContainer {
+    position: relative;
+}
+
+.queueButton {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.queueButton.active,
+.queueButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.queueList {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    width: 300px;
+    max-height: 400px;
+    background: #282828;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.queueHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #3e3e3e;
+}
+
+.queueHeader h3 {
+    margin: 0;
+    color: #fff;
+}
+
+.queueHeader span {
+    color: #b3b3b3;
+    font-size: 0.9rem;
+}
+
+.queueItems {
+    overflow-y: auto;
+    max-height: 340px;
+}
+
+.queueItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #3e3e3e;
+    transition: background-color 0.2s;
+}
+
+.queueItem:hover {
+    background: #333;
+}
+
+.queueItem.active {
+    background: #333;
+}
+
+.queueItemInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    cursor: pointer;
+}
+
+.queueItemCover {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.queueItemDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.queueItemTitle {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.queueItemArtist {
+    color: #b3b3b3;
+    font-size: 0.8rem;
+}
+
+.removeButton {
+    background: none;
+    border: none;
+    color: #b3b3b3;
+    cursor: pointer;
+    padding: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.queueItem:hover .removeButton {
+    opacity: 1;
+}
+
+.removeButton:hover {
+    color: #fff;
+} 

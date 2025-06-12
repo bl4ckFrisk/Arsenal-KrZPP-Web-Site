@@ -1,0 +1,32 @@
+.searchPage {
+    padding: 20px;
+    color: #ffffff;
+}
+
+.searchContainer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.resultsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+} 

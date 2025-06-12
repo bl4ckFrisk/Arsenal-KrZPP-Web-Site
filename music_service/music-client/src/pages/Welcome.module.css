@@ -1,0 +1,37 @@
+.welcomeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.welcomeContainer h1 {
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.authButton {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #4a90e2;
+    color: white;
+}
+
+.authButton:hover {
+    background-color: #357abd;
+    transform: translateY(-2px);
+} 
