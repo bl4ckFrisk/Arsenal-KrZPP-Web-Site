@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+.slideshow {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Liquid Glass Container */
+.liquidGlassContainer {
+  width: 350px;
+  height: 350px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 215, 0, 0.2);
+}
+
+.liquidGlassContainer:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 
+    0 35px 70px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(255, 215, 0, 0.3),
+    inset 0 1px 0 rgba(255, 215, 0, 0.3);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+/* Animated border effect */
+.liquidGlassContainer::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgba(255, 215, 0, 0.8),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 237, 78, 0.8),
+    rgba(255, 215, 0, 0.8));
+  border-radius: 24px;
+  z-index: -1;
+  animation: borderRotate 6s linear infinite;
+  background-size: 400% 400%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.liquidGlassContainer:hover::before {
+  opacity: 1;
+}
+
+@keyframes borderRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Photo Container */
+.photoContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  border-radius: 22px;
+}
+
+.photo.active {
+  opacity: 1;
+}
+
+.photoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    transparent 40%, 
+    rgba(255, 215, 0, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photo:hover .photoOverlay {
+  opacity: 1;
+}
+
+/* Navigation Buttons */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 0;
+}
+
+.liquidGlassContainer:hover .navButton {
+  opacity: 1;
+}
+
+.navButton:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.6);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.prevButton {
+  left: 15px;
+}
+
+.nextButton {
+  right: 15px;
+}
+
+/* Arrow styles */
+.arrowLeft,
+.arrowRight {
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.arrowLeft {
+  border-width: 6px 8px 6px 0;
+  border-color: transparent #ffd700 transparent transparent;
+}
+
+.arrowRight {
+  border-width: 6px 0 6px 8px;
+  border-color: transparent transparent transparent #ffd700;
+}
+
+.navButton:hover .arrowLeft {
+  border-right-color: #ffed4e;
+}
+
+.navButton:hover .arrowRight {
+  border-left-color: #ffed4e;
+}
+
+/* Slide Indicators */
+.indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.indicator:hover {
+  background: rgba(255, 215, 0, 0.6);
+  transform: scale(1.2);
+}
+
+.indicator.active {
+  background: rgba(255, 215, 0, 0.9);
+  transform: scale(1.3);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Slide Counter */
+.slideCounter {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  padding: 6px 12px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.liquidGlassContainer:hover .slideCounter {
+  opacity: 1;
+}
+
+.currentSlide {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.divider {
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 4px;
+}
+
+.totalSlides {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Progress Bar */
+.progressContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  animation: progressGlow 4s ease-in-out infinite;
+}
+
+@keyframes progressGlow {
+  0%, 100% { 
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  }
+}
+
+/* Loading State */
+.loadingSpinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid rgba(255, 215, 0, 0.2);
+  border-top: 3px solid #ffd700;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  color: #ffffff;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* No Photos State */
+.noPhotos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+.noPhotosIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.noPhotos p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Advanced Glass Effects */
+.liquidGlassContainer::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    transparent 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.liquidGlassContainer:hover::after {
+  opacity: 1;
+}
+
+/* Floating particles inside container */
+.photoContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 40% 40%, rgba(255, 237, 78, 0.1) 0%, transparent 30%);
+  animation: floatingParticles 10s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.liquidGlassContainer:hover .photoContainer::before {
+  opacity: 1;
+}
+
+@keyframes floatingParticles {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateY(-10px) rotate(180deg);
+    opacity: 0.6;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .liquidGlassContainer {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .navButton {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .arrowLeft {
+    border-width: 5px 6px 5px 0;
+  }
+  
+  .arrowRight {
+    border-width: 5px 0 5px 6px;
+  }
+  
+  .slideCounter {
+    top: 15px;
+    right: 15px;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+  
+  .indicators {
+    bottom: 15px;
+  }
+  
+  .indicator {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .liquidGlassContainer {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .navButton {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .prevButton {
+    left: 10px;
+  }
+  
+  .nextButton {
+    right: 10px;
+  }
+  
+  .slideCounter {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .indicators {
+    bottom: 10px;
+  }
+} 

@@ -1,0 +1,845 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+.welcomePage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header with Liquid Glass */
+.header {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo span {
+  font-size: 0.75rem;
+  color: #a0aec0;
+  font-weight: 400;
+  display: block;
+  margin-top: 2px;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.phone {
+  font-size: 0.9rem;
+  color: #ffd700;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Main Company Section with Advanced Liquid Glass */
+.mainCompany {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  /* Максимальная совместимость с разными браузерами */
+  height: 100vh; /* Fallback для старых браузеров */
+  height: 100dvh; /* Dynamic Viewport Height - для современных браузеров */
+  height: calc(var(--vh, 1vh) * 100); /* Custom property fallback */
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: 500px; /* Абсолютный минимум */
+  display: flex;
+  align-items: center;
+  padding-top: 80px; /* Компенсируем высоту header */
+  box-sizing: border-box;
+}
+
+.liquidGlassBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.3) 0%, transparent 20%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 50% 20%, rgba(255, 237, 78, 0.2) 0%, transparent 20%);
+  filter: blur(50px);
+  animation: liquidMove 8s ease-in-out infinite;
+}
+
+@keyframes liquidMove {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  33% { transform: scale(1.1) rotate(1deg); }
+  66% { transform: scale(0.9) rotate(-1deg); }
+}
+
+.mainCompany .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 2rem 0;
+  color: #ffffff;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.brandName {
+  display: block;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 1rem;
+}
+
+.mainSubtitle {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin: 0 0 3rem 0;
+  color: #a0aec0;
+  font-weight: 400;
+}
+
+.mainContact {
+  margin-top: 2.5rem;
+}
+
+.phoneContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  max-width: 320px;
+}
+
+.phoneContainer:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+}
+
+.phoneContainer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 215, 0, 0.1) 90deg,
+    transparent 180deg,
+    rgba(255, 237, 78, 0.1) 270deg,
+    transparent 360deg
+  );
+  animation: phoneGlow 6s linear infinite;
+  opacity: 0;
+}
+
+.phoneContainer:hover::before {
+  opacity: 1;
+}
+
+@keyframes phoneGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.phoneIcon {
+  font-size: 1.5rem;
+  animation: phonePulse 2s ease-in-out infinite;
+}
+
+@keyframes phonePulse {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+  }
+  50% { 
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+  }
+}
+
+.phoneInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.phoneLabel {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.phoneNumber {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffd700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.phoneNumber:hover {
+  color: #ffed4e;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.phoneNumber::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  transition: width 0.3s ease;
+}
+
+.phoneNumber:hover::after {
+  width: 100%;
+}
+
+.mainImage {
+  display: flex;
+  justify-content: center;
+}
+
+.chipCore {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+  animation: chipPulse 3s ease-in-out infinite;
+}
+
+@keyframes chipPulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+  }
+}
+
+.circuitPattern {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 50%;
+  animation: circuitRotate 10s linear infinite;
+}
+
+.circuitPattern::before,
+.circuitPattern::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ffd700;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffd700;
+}
+
+.circuitPattern::before {
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.circuitPattern::after {
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes circuitRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.electronFlow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 50%;
+  animation: electronFlow 8s linear infinite reverse;
+}
+
+@keyframes electronFlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.infoSection {
+}
+
+.infoContainer {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 50px;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  border-radius: 25px; 
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4rem 0;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.infoCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(150px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 25px;
+  text-align: left;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.infoCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 0.1) 0%, 
+    transparent 50%, 
+    rgba(255, 237, 78, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.infoCard:hover::before {
+  opacity: 1;
+}
+
+.infoCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.infoIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+.infoCard h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.infoSubcategories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.infoSubcategories span {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(79, 209, 199, 0.3);
+}
+
+.infoCard p {
+  color: #a0aec0;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Stats Section */
+.liquidGlassStats {
+  background: rgba(255, 215, 0, 0.1);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquidGlassStats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(255, 237, 78, 0.2) 0%, transparent 50%);
+  animation: statsGlow 6s ease-in-out infinite;
+}
+
+@keyframes statsGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.statNumber {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.statLabel {
+  font-size: 1.1rem;
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+/* Contact Section */
+.liquidGlassContact {
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-radius: 24px;
+  /* border: 2px solid rgba(255, 215, 0, 0.3); */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.liquidGlassContact::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 215, 0, 0) 90deg,
+    transparent 180deg,
+    rgba(255, 237, 78, 0) 270deg,
+    transparent 360deg
+  );
+  animation: contactRotate 60s linear infinite;
+}
+
+@keyframes contactRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.liquidGlassContact h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+}
+
+.liquidGlassContact p {
+  font-size: 1.2rem;
+  margin: 0 0 3rem 0;
+  color: #a0aec0;
+  position: relative;
+  z-index: 1;
+}
+
+.contactMethods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.contactCard {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contactCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.contactCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 0.05) 0%, 
+    transparent 50%, 
+    rgba(255, 237, 78, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contactCard:hover::before {
+  opacity: 1;
+}
+
+.contactIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+.contactInfo h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.contactLink {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contactLink:hover {
+  color: #ffed4e;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.contactText {
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+/* Footer */
+.footer {
+  padding: 80px 0 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footerSection h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footerSection p {
+  color: #a0aec0;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contactInfo {
+  margin-top: 1rem;
+}
+
+.contactInfo p {
+  color: #ffd700;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.footerSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerSection li {
+  color: #a0aec0;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.25rem 0;
+}
+
+.footerSection li:hover {
+  color: #ffd700;
+  transform: translateX(5px);
+}
+
+/* Employee Login Styles */
+.employeeLogin {
+  margin-top: 1rem;
+}
+
+.employeeLogin p {
+  color: #a0aec0;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.employeeLoginBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  color: #000000;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.employeeLoginBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.employeeLoginBtn:hover::before {
+  left: 100%;
+}
+
+.employeeLoginBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+}
+
+.footerBottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.footerBottom p {
+  color: #718096;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mainCompany .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+  
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+  
+  .brandName {
+    font-size: 2rem;
+  }
+  
+  .phoneContainer {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  .nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .header .container {
+    height: auto;
+    padding: 1rem 20px;
+    flex-direction: column;
+  }
+  
+  .mainCompany {
+    padding: 40px 0;
+    height: auto;
+    min-height: 400px;
+    max-height: none;
+  }
+  
+  .liquidGlassCard {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .chipCore {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .productsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footerContent {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .liquidGlassContact {
+    margin: 0 1rem;
+    padding: 3rem 1.5rem;
+  }
+  
+  .contactMethods {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainCompany {
+    padding: 30px 0;
+    height: 100vh;
+    height: 100dvh; 
+    height: calc(var(--vh, 1vh) * 100);
+    min-height: 350px;
+    padding-top: 140px; /* Еще больше отступ для очень маленьких экранов */
+  }
+
+  .mainTitle {
+    font-size: 2rem;
+  }
+  
+  .brandName {
+    font-size: 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+} 
